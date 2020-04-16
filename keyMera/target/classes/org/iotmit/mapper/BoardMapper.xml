@@ -16,9 +16,6 @@ values(seq_board.nextval, #{title}, #{content}, #{writer})
 
 
 <insert id="insertSelectKey">
-	<selectKey keyProperty="bno" order="BEFORE" resultType="long">
-		select seq_board.nextval from dual
-	</selectKey>
 	insert into tbl_board(bno,title,content,writer)	values(#{bno}, #{title}, #{content}, #{writer})
 </insert>
 
