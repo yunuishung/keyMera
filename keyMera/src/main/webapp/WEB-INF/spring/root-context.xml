@@ -26,20 +26,20 @@
 		<property name="password" value="book_ex"></property>
 	</bean>-->
 	
-  	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+  	<!--<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
       <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
       <property name="jdbcUrl" value="jdbc:log4jdbc:mysql://iotmit.iptime.org:2233/keyMera"></property>
       <property name="username" value="mit09"></property>
       <property name="password" value="Skaksdkfwl!1"></property>
-   </bean> 
+   </bean> -->
 	
-<!-- 참고 사이트 : https://all-record.tistory.com/175 
+	<!-- download : https://downloads.mariadb.com/Connectors/java/connector-java-2.6.0/ -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
       <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
       <property name="jdbcUrl" value="jdbc:log4jdbc:mariadb://iotmit.iptime.org:2233/keyMera"></property>
       <property name="username" value="mit09"></property>
       <property name="password" value="Skaksdkfwl!1"></property>
-   </bean>-->
+   </bean>
 	
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
 		<constructor-arg ref="hikariConfig" />

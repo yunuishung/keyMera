@@ -50,7 +50,7 @@ public class BoardConrtollerTests {
 	@Test
 	public void testRegister() throws Exception {
 		log.info(mockMvc.perform(MockMvcRequestBuilders.post("/board/register")
-				.param("title", "AAAÅ×½ºÆ® ±ÛÁ¦¸ñ").param("content","Å×½ºÆ® ±Û³»¿ë")
+				.param("title", "í…ŒìŠ¤íŠ¸ í•œê¸€  ").param("content","í•œê¸€ì´ ê¹¨ì ¸ì„œ ë‹¤ì‹œ í…ŒìŠ¤íŠ¸ í•©ë‹ˆë‹¤ ")
 				.param("writer","user00")).andReturn().getModelAndView().getViewName());
 		
 	}
@@ -80,8 +80,8 @@ public class BoardConrtollerTests {
 	public void testModify() throws Exception {
 		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/board/modify")
 				.param("bno", "1")
-				.param("title", "¼öÁ¤µÈ Å×½ºÆ® »õ±Û Á¦¸ñ")
-				.param("content","¼öÁ¤µÈ Å×½ºÆ® »õ±Û ³»¿ë")
+				.param("title", "í•œê¸€ ê¹¨ì„œì„œ ìˆ˜ì •í•©ë‹ˆë‹¤")
+				.param("content","í•œê¸€ë¦¬ ê¹¨ì ¸ì„œ ë‹¤ì‹œ ìˆ˜ì •í•©ë‹ˆë‹¤.")
 				.param("writer","user00")).andReturn().getModelAndView().getViewName();
 		log.info(resultPage );
 		
