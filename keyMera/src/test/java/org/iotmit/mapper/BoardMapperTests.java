@@ -28,7 +28,7 @@ public class BoardMapperTests {
 	public void testInsert() {
 		BoardVO board = new BoardVO();
 		
-		board.setTitle("testInsert Junit 테스입니다. ");
+		board.setTitle("testInsert Junit 테스입니다!. ");
 		board.setContent("testInsert Junit 테스입니다. ");
 		board.setWriter("관리자");
 		mapper.insert(board);
@@ -38,10 +38,12 @@ public class BoardMapperTests {
 	@Test
 	public void testInsertSelectKey() {
 		BoardVO board = new BoardVO();
-		board.setTitle("testRead() 테스트입니다.");
-		board.setContent("<select id=\"read\" resultType=\"org.iotmit.domain.BoardVO\">\r\n" + 
-				"select * from tbl_board where bno = #{bno}\r\n" + 
-				"</select>");
+		board.setTitle("testDelete() 테스트입니다.");
+		board.setContent("	@Test\r\n" + 
+				"	public void	testDelete() {\r\n" + 
+				"		log.info(\"1번글 삭제\" + mapper.delete(1));\r\n" + 
+				"	}\r\n" + 
+				"	");
 		board.setWriter("관리자");
 				
 		mapper.insertSelectKey(board);
@@ -54,17 +56,17 @@ public class BoardMapperTests {
 	
 	@Test
 	public void	testDelete() {
-		log.info("���� ����" + mapper.delete(2));
+		log.info("1번글 삭제" + mapper.delete(1));
 	}
 	
 	@Test
 	public void	testUpate() {
 		BoardVO board = new BoardVO();
-		board.setTitle("�����Դϴ�.1");
-		board.setContent("�����Դϴ�.1");
-		board.setWriter("������1");
+		board.setTitle("업데이트 테스트입니다");
+		board.setContent("업데이합니다");
+		board.setWriter("관리자");
 		board.setBno(3L);
-		log.info("���� ����" + mapper.update(board));
+		log.info("업데이트" + mapper.update(board));
 	}
 	
 	@Test
