@@ -53,7 +53,7 @@ select * from tbl_board
 
 <select id="getListWithPaging" resultType="org.iotmit.domain.BoardVO">
 <![CDATA[select r1.* FROM  ( SELECT * FROM tbl_board  order by bno desc ) as r1 
-LIMIT #{length, jdbcType=INTEGER} OFFSET #{start, jdbcType=INTEGER}]]>
+LIMIT #{amount, jdbcType=INTEGER} OFFSET #{pageNum, jdbcType=INTEGER}]]>
 </select>
 
 <select id="getListWithPagingTemp" resultType="org.iotmit.domain.BoardVO">
