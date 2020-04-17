@@ -46,10 +46,16 @@ set title = #{title}, content=#{content},writer=#{writer}, updatedate = now() WH
 <select id="quiz" resultType="org.iotmit.domain.BoardVO">
 select title from tbl_board where mod(bno,#{num})=0
 </select>
+
+<select id="getList" resultType="org.iotmit.domain.BoardVO">
+<![CDATA[select * from tbl_board]]>
+</select>
+
 <select id="getListWithPaging" resultType="org.iotmit.domain.BoardVO">
-<![CDATA[select *from (select rownum rn, tbl_board.* from tbl_board where rownum <= #{pageNum}*#{amount})
+<![CDATA[select * from (select rownum rn, tbl_board.* from tbl_board where rownum <= #{pageNum}*#{amount})
 where rn > (#{pageNum}-1)*#{amount}]]>
 </select>
+
 <!-- <![CDATA[]>를 붙여야 부등호를 쿼리로 인식함/위에서 X개를 뽑아서 뒤에 Y개를 가져온다는 쿼리-->
 
 
