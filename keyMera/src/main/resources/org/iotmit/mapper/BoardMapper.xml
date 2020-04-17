@@ -16,7 +16,7 @@ values(NULL, #{title}, #{content}, #{writer})
 
 
 <insert id="insertSelectKey">
-	insert into tbl_board(bno,title,content,writer)	values(#{bno}, #{title}, #{content}, #{writer})
+	insert into tbl_board(bno,title,content,writer,regdate)	values( NULL , #{title}, #{content}, #{writer}, now())
 </insert>
 
 <select id="read" resultType="org.iotmit.domain.BoardVO">

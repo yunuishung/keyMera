@@ -27,10 +27,10 @@ public class BoardMapperTests {
 	@Test
 	public void testInsert() {
 		BoardVO board = new BoardVO();
-		board.setTitle("Á¦¸ñÀÔ´Ï´Ù.");
-		board.setContent("³»¿ëÀÔ´Ï´Ù.");
-		board.setWriter("°ü¸®ÀÚ");
-				
+		
+		board.setTitle("testInsert Junit í…ŒìŠ¤ì…ë‹ˆë‹¤. ");
+		board.setContent("testInsert Junit í…ŒìŠ¤ì…ë‹ˆë‹¤. ");
+		board.setWriter("ê´€ë¦¬ì");
 		mapper.insert(board);
 		
 	}
@@ -38,9 +38,11 @@ public class BoardMapperTests {
 	@Test
 	public void testInsertSelectKey() {
 		BoardVO board = new BoardVO();
-		board.setTitle("Á¦¸ñÀÔ´Ï´Ù.1");
-		board.setContent("³»¿ëÀÔ´Ï´Ù.1");
-		board.setWriter("°ü¸®ÀÚ1");
+		board.setTitle("testRead() í…ŒìŠ¤íŠ¸ì…ë‹ˆë‹¤.");
+		board.setContent("<select id=\"read\" resultType=\"org.iotmit.domain.BoardVO\">\r\n" + 
+				"select * from tbl_board where bno = #{bno}\r\n" + 
+				"</select>");
+		board.setWriter("ê´€ë¦¬ì");
 				
 		mapper.insertSelectKey(board);
 	}
@@ -52,17 +54,17 @@ public class BoardMapperTests {
 	
 	@Test
 	public void	testDelete() {
-		log.info("»èÁ¦ °³¼ö" + mapper.delete(2));
+		log.info("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½" + mapper.delete(2));
 	}
 	
 	@Test
 	public void	testUpate() {
 		BoardVO board = new BoardVO();
-		board.setTitle("Á¦¸ñÀÔ´Ï´Ù.1");
-		board.setContent("³»¿ëÀÔ´Ï´Ù.1");
-		board.setWriter("°ü¸®ÀÚ1");
+		board.setTitle("ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.1");
+		board.setContent("ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.1");
+		board.setWriter("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1");
 		board.setBno(3L);
-		log.info("¼öÁ¤ °³¼ö" + mapper.update(board));
+		log.info("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½" + mapper.update(board));
 	}
 	
 	@Test
