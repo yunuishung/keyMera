@@ -6,17 +6,19 @@ import org.iotmit.domain.BoardVO;
 import org.iotmit.domain.Criteria;
 
 public interface BoardService {
-	//1.¸ñ·Ïº¸±â
+	//1.ï¿½ï¿½Ïºï¿½ï¿½ï¿½
 	public List<BoardVO> getList(Criteria cri );
-	//2.°Ô½Ã±Ûµî·Ï
+	//2.ï¿½Ô½Ã±Ûµï¿½ï¿½
 	public void register(BoardVO board);
-	//3.°Ô½Ã±Ûº¸±â
+	
+	public void insert(BoardVO board);
+	//3.ï¿½Ô½Ã±Ûºï¿½ï¿½ï¿½
 	public BoardVO get(long bno);
-	//4.°Ô½Ã±Û¼öÁ¤
+	//4.ï¿½Ô½Ã±Û¼ï¿½ï¿½ï¿½
 	public boolean modify(BoardVO board);
-	//5.°Ô½Ã±Û»èÁ¦
+	//5.ï¿½Ô½Ã±Û»ï¿½ï¿½ï¿½
 	public boolean remove(long bno);
-	//6.ÀüÃ¼ °Ô½ÃÆÇ ±Û°º¼ö
+	//6.ï¿½ï¿½Ã¼ ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½Û°ï¿½ï¿½ï¿½
 	public long scount();
 	
 	public long admin_scount();

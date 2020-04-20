@@ -26,7 +26,7 @@ public class BoardController {
 	
 	@GetMapping("/list")
 	public void list(Criteria cri,  Model model) {
-		log.info("***¸®½ºÆ® Ã³¸®*****");
+		log.info("** ê¸€ ëª©ë¡ *****");
 		model.addAttribute("list",service.getList( cri ) );
 		int count = (int)service.scount();  
 		model.addAttribute("pageMaker", new PageDTO(cri,count));
@@ -34,11 +34,20 @@ public class BoardController {
 	
 	@PostMapping("/register")
 	public String register(BoardVO board) {
-		log.info("****±Ûµî·ÏÃ³¸®:*****" + board);
+		log.info("=======ê¸€ ì“°ê¸°=======" + board);
 		service.register(board);
 		return "redirect:/board/list";
 		
 	}
+	
+	@PostMapping("/insert")
+	public String insert(BoardVO board) {
+		log.info("=======ê¸€ ì“°ê¸°=======" + board);
+		service.insert(board);
+		return "redirect:/board/list";
+		
+	}
+	
 	@GetMapping("/register")
 	public void register() {
 
@@ -46,25 +55,25 @@ public class BoardController {
 	
 	@GetMapping("/get")
 	public void get(@RequestParam("bno") long bno, Model model) {
-		log.info("**************************±Û Á¶È¸ ¿äÃ»********************");
+		log.info("************ê¸€ë²ˆí˜¸ ê°€ì ¸ì˜¤ê¸°******************");
 		model.addAttribute("board", service.get(bno));
 
 	}
 	
 	@PostMapping("/modify")
 	public String modify(BoardVO board, RedirectAttributes rttr) {
-		log.info("=========================±Û ¼öÁ¤ =========="+ board );
+		log.info("====ê¸€ ìˆ˜ì •=========="+ board );
 		if( service.modify(board)) {
-			rttr.addFlashAttribute("°á°ú", "±Û ¼öÁ¤ ¼º°ø");
+			rttr.addFlashAttribute("ï¿½ï¿½ï¿½", "ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		}
 		return "redirect:/board/list";
 	}
 
 	@PostMapping("/remove")
 	public String remove(@RequestParam("bno") Long bno, RedirectAttributes rttr) {
-		log.info( "==========================»èÁ¦ ===============" + bno );
+		log.info( "==============ê¸€ ì‚­ì œ=============" + bno );
 		if( service.remove(bno)) {
-			rttr.addFlashAttribute("result","±Û »èÁ¦ ¼º°ø");
+			rttr.addFlashAttribute("result","ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		}
 		return "redirect:/board/list";
 	}

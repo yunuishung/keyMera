@@ -20,26 +20,26 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public List<BoardVO> getList(Criteria cri) {
-		log.info("±Û¸ñ·Ï °¡Á®¿À±â");
+		log.info("ê¸€ëª©ë¡ ê°€ì ¸ì˜¤ê¸°");
 		return mapper.getListWithPaging(cri);
 	}
 	
 	
 	@Override
 	public void register(BoardVO board) {
-		log.info("±Ûµî·Ï Áß" + board);
+		log.info("ê¸€ì“°ê¸°" + board);
 		mapper.insertSelectKey(board);
 	}
 
 	@Override
 	public BoardVO get(long bno) {
-		log.info("±Û»ó¼¼º¸±â ÇÏ³ªÀÇ ±Û°¡Á®¿À±â" + bno);
+		log.info("ê¸€ë²ˆí˜¸ì˜ ë‚´ìš© ê°€ì ¸ì˜¤ê¸°" + bno);
 		return mapper.read(bno);
 	}
 
 	@Override
 	public boolean modify(BoardVO board) {
-		log.info("±Û¼öÁ¤" + board);
+		log.info("ìˆ˜ì •" + board);
 	//	int i =mapper.update(board);
 	//	if(i==1)	return true;
 	//	else	return false;
@@ -48,7 +48,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public boolean remove(long bno) {
-		log.info("±Û»èÁ¦ ±Û¹øÈ£:" + bno);
+		log.info("ì‚­ì œ:" + bno);
 		return mapper.delete(bno)==1;
 	}
 
@@ -66,6 +66,14 @@ public class BoardServiceImpl implements BoardService {
 	public long search_count(String writter) {
 		System.out.println("search_count : "+ writter);
 		return mapper.search_count( writter );
+	}
+
+
+	@Override
+	public void insert(BoardVO board) {
+		log.info("ê¸€ì“°ê¸°" + board);
+		mapper.insertSelectKey(board);
+		
 	}
 
 	
