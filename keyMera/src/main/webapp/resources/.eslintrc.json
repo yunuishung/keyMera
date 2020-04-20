@@ -9,7 +9,7 @@
   },
   "extends": "../.eslintrc.json",
   "rules": {
-    // Best Practices
+      // Best Practices
     "no-magic-numbers": "off",
     "vars-on-top": "off",
 
