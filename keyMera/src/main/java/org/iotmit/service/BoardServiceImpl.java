@@ -72,7 +72,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void insert(BoardVO board) {
 		log.info("글쓰기" + board);
-		mapper.insertSelectKey(board);
+		mapper.insert(board);
 		
 	}
 

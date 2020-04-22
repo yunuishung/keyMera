@@ -7,6 +7,7 @@ import org.iotmit.service.BoardService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,6 +33,30 @@ public class BoardController {
 		model.addAttribute("pageMaker", new PageDTO(cri,count));
 	}
 	
+
+
+	@GetMapping("/register")
+	public void register() {
+
+	}	
+
+	@GetMapping("/insert")
+	public void insert() {
+
+	}
+	@GetMapping("/get")
+	public void get(@RequestParam("bno") long bno, Model model) {
+		log.info("************글번호 가져오기******************");
+		model.addAttribute("board", service.get(bno));
+
+	}
+	@GetMapping("/modify")
+	public void modify(@RequestParam("bno") long bno, Model model) {
+		log.info("************글번호 가져오기******************");
+		model.addAttribute("board", service.get(bno));
+
+	}	
+
 	@PostMapping("/register")
 	public String register(BoardVO board) {
 		log.info("=======글 쓰기=======" + board);
@@ -39,7 +64,7 @@ public class BoardController {
 		return "redirect:/board/list";
 		
 	}
-	
+
 	@PostMapping("/insert")
 	public String insert(BoardVO board) {
 		log.info("=======글 쓰기=======" + board);
@@ -47,25 +72,15 @@ public class BoardController {
 		return "redirect:/board/list";
 		
 	}
-	
-	@GetMapping("/register")
-	public void register() {
 
-	}	
-	
-	@GetMapping("/get")
-	public void get(@RequestParam("bno") long bno, Model model) {
-		log.info("************글번호 가져오기******************");
-		model.addAttribute("board", service.get(bno));
-
-	}
-	
 	@PostMapping("/modify")
-	public String modify(BoardVO board, RedirectAttributes rttr) {
+	public String modify(BoardVO board, RedirectAttributes rttr,Criteria cri) {
 		log.info("====글 수정=========="+ board );
 		if( service.modify(board)) {
-			rttr.addFlashAttribute("���", "�� ���� ����");
+			rttr.addFlashAttribute("result", "글수정되었습니다.");
 		}
+		rttr.addFlashAttribute("pageNum", cri.getPageNum() );
+		rttr.addFlashAttribute("amount", cri.getAmount() );
 		return "redirect:/board/list";
 	}
 
@@ -73,7 +88,7 @@ public class BoardController {
 	public String remove(@RequestParam("bno") Long bno, RedirectAttributes rttr) {
 		log.info( "==============글 삭제=============" + bno );
 		if( service.remove(bno)) {
-			rttr.addFlashAttribute("result","�� ���� ����");
+			rttr.addFlashAttribute("result","삭제되었습니다.");
 		}
 		return "redirect:/board/list";
 	}

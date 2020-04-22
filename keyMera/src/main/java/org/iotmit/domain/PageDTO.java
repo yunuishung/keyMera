@@ -9,20 +9,19 @@ public class PageDTO {
 	private int endPage;
 	private boolean prev, next;
 	
-	private Criteria cri;   //현재 페이지와 몇개를 보여줄지 정보
-	private int total;   //전체 데이타 수
+	private Criteria cri;   //
+	private int total;   //
 	
-	public PageDTO( Criteria cri, int total) {//생성자
+	public PageDTO( Criteria cri, int total) {//
 		this.cri = cri;
 		this.total = total;
 		
-		//마지막 페이지
+		//
 		this.endPage = (int)(Math.ceil(cri.getPageNum() /10.0))*10;
-		//시작 페이지
-		this.startPage = this.endPage - 9;     //페이지 하단에 페이지 번호는 10개씩
+		//
+		this.startPage = this.endPage - 9;     //
 		
-		int realEnd = (int) (Math.ceil(total*1.0)/ cri.getAmount());  //진짜 마지막 페이지
-		//계산한  endPage가 실제 페이지 보다 크면 실제 페이지로 바꿔야 하죠
+		int realEnd = (int) (Math.ceil(total*1.0)/ cri.getAmount());  //
 		if( this.endPage > realEnd) {
 			this.endPage = realEnd;
 		}
