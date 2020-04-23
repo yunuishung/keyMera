@@ -15,12 +15,13 @@
         <div class="panel-body">
             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                <thead>
-                  <tr>
+                  <tr align="center">
                       <th>번호</th>
                       <th>제목</th>
                       <th>작성자</th>
                       <th>작성일</th>
-                      <th>수정일</th>
+                      <th>조회수</th>
+                      <th>첨부</th>
                   </tr>
                </thead>
                <tbody>
@@ -31,9 +32,10 @@
                       <a href='/board/get?bno=<c:out value="${board.bno}"/>'><c:out value="${board.title}"/></a></td>
                       <td><c:out value="${board.writer}"/></td>
                       <td class="center"><fmt:formatDate pattern="yyyy-MM-dd hh:MM:ss" value="${board.regdate}"/></td>
-                      <td class="center"><fmt:formatDate pattern="yyyy-MM-dd hh:MM:ss" value="${board.updateDate}"/></td>
+                      <td class="center"><c:out value=""/></td>
+                      <td class="center"><c:out value=""/></td>
                   </tr>
-	</c:forEach>
+				</c:forEach>
                </tbody>
             </table>
            <div class="well" align="center">

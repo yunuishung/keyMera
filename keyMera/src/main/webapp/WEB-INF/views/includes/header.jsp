@@ -28,7 +28,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
     <div class="container">
-      <a href="../resources/index3.html" class="navbar-brand">
+      <a href="../home.jsp" class="navbar-brand">
         <img src="../resources/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
              style="opacity: .8">
         <span class="brand-text font-weight-light">KeyMera</span>
@@ -42,16 +42,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Left navbar links -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a href="index3.html" class="nav-link">Home</a>
+            <a href="/home.jsp" class="nav-link">Home</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">Contact</a>
+            <a href="/board/list" class="nav-link">회원 게시판</a>
           </li>
+          <li class="nav-item">
+            <a href="/member/" class="nav-link">회원</a>
+          </li>          
+          <li class="nav-item">
+            <a href="/login/login.jsp" class="nav-link">로그인</a>
+          </li>          
+          
           <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Dropdown</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-              <li><a href="#" class="dropdown-item">Some action </a></li>
-              <li><a href="#" class="dropdown-item">Some other action</a></li>
+              <li><a href="#" class="dropdown-item">게시판 </a></li>
+              <li><a href="#" class="dropdown-item">..</a></li>
 
               <li class="dropdown-divider"></li>
 
@@ -62,17 +69,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <li>
                     <a tabindex="-1" href="#" class="dropdown-item">level 2</a>
                   </li>
-
-                  <!-- Level three dropdown-->
-                  <li class="dropdown-submenu">
-                    <a id="dropdownSubMenu3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">level 2</a>
-                    <ul aria-labelledby="dropdownSubMenu3" class="dropdown-menu border-0 shadow">
-                      <li><a href="#" class="dropdown-item">3rd level</a></li>
-                      <li><a href="#" class="dropdown-item">3rd level</a></li>
-                    </ul>
-                  </li>
-                  <!-- End Level three -->
-
                   <li><a href="#" class="dropdown-item">level 2</a></li>
                   <li><a href="#" class="dropdown-item">level 2</a></li>
                 </ul>
