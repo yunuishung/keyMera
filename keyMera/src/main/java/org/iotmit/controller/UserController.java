@@ -1,9 +1,9 @@
 package org.iotmit.controller;
 
-import org.iotmit.domain.EventVO;
+import org.iotmit.domain.UserVO;
 import org.iotmit.domain.Criteria;
 import org.iotmit.domain.PageDTO;
-import org.iotmit.service.EventService;
+import org.iotmit.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,16 +19,16 @@ import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
-@RequestMapping("/event/*")
+@RequestMapping("/user/*")
 @AllArgsConstructor
-public class EventController {
+public class UserController {
 
-	private EventService service;
+	private UserService service;
 	
-	@GetMapping("/eventlist")
-	public void eventlist(Criteria cri,  Model model) {
-		log.info("** 이벤트 목록 ***");
-		model.addAttribute("eventlist",service.getList( cri ) );
+	@GetMapping("/userlist")
+	public void userlist(Criteria cri,  Model model) {
+		log.info("** 회원 목록 ***");
+		model.addAttribute("userlist",service.getList( cri ) );
 		int count = (int)service.scount();  
 		model.addAttribute("pageMaker", new PageDTO(cri,count));
 	}

@@ -48,8 +48,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="/board/list" class="nav-link">회원 게시판</a>
           </li>
           <li class="nav-item">
-            <a href="/member/" class="nav-link">회원</a>
-          </li>          
+            <a href="/user/userlist" class="nav-link">회원</a>
+          </li>     
+          <li class="nav-item">
+            <a href="/event/eventlist" class="nav-link">이벤트 </a>
+          </li>       
           <li class="nav-item">
             <a href="/login/login.jsp" class="nav-link">로그인</a>
           </li>          

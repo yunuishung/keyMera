@@ -9,7 +9,7 @@
 
 <!-- /.panel-heading -->			    	
         <div class="panel-heading">
-            	 게시판 Advanced Tables
+            	 카메라 인식 결과 확인 
         </div>      
       
         <div class="panel-body">
@@ -17,23 +17,23 @@
                <thead>
                   <tr align="center">
                       <th>번호</th>
-                      <th>제목</th>
-                      <th>작성자</th>
-                      <th>작성일</th>
-                      <th>조회수</th>
-                      <th>첨부</th>
+                      <th>회원명</th>
+                      <th>이벤트일시</th>
+                      <th>인식율</th>
+                      <th>인식결과</th>
+                      <th>비고</th>
                   </tr>
                </thead>
                <tbody>
-				<c:forEach items="${list}" var="board">                                
+				<c:forEach items="${eventlist}" var="event">                                
                   <tr class="odd gradeX">
-                      <td><c:out value="${board.bno}"/></td>
+                      <td><c:out value="${event.detect}"/></td>
                       <td>
-                      <a href='/board/get?bno=<c:out value="${board.bno}"/>'><c:out value="${board.title}"/></a></td>
-                      <td><c:out value="${board.writer}"/></td>
-                      <td class="center"><fmt:formatDate pattern="yyyy-MM-dd hh:MM:ss" value="${board.regdate}"/></td>
-                      <td class="center"><c:out value=""/></td>
-                      <td class="center"><c:out value=""/></td>
+                      <a href='/event/get?bno=<c:out value="${event.user}"/>'><c:out value="${event.user}"/></a></td>
+                      <td class="center"><fmt:formatDate pattern="yyyy-MM-dd hh:MM:ss" value="${event.date}"/></td>
+                      <td><c:out value="${event.confidence}"/></td>
+                      <td class="center"><c:out value=""/>인식성공</td>
+                      <td class="center"><img src='http://iotmit.iptime.org:2180/resources/confidence_image/<c:out value="${event.detect}"/>.jpg' width="20"></td></td>
                   </tr>
 				</c:forEach>
                </tbody>

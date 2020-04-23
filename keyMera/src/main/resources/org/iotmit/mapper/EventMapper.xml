@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.iotmit.mapper.EventMapper">
+
+
+<insert id="insert">
+	insert into testcam(detect, user, date,confidence)	values( NULL , #{user}, detectw(),#{confidence} )
+</insert>
+
+<select id="read" resultType="org.iotmit.domain.EventVO">
+select * from testcam where detect = #{detect}
+</select>
+
+<select id="count" resultType="long">
+select count(*) from testcam
+</select>
+
+<select id="admin_scount" resultType="long">
+select count(*) from testcam where user = '관리자'
+</select>
+
+<select id="search_count" resultType="long">
+select count(*) from testcam where id = #{id}
+</select>
+
+<select id="search_list" resultType="long">
+<![CDATA[select * from testcam where detect >= #{num1} and detect <= #{num2} ]]> 
+</select>
+
+<delete id="delete">
+delete from testcam where detect=#{detect}
+</delete>
+
+<update id="update">
+update testcam 
+ set id = #{id}, pw = #{pw}, name = #{name}, gender = #{gender}, email = #{email} WHERE detect=#{detect}
+</update>
+
+<select id="quiz" resultType="org.iotmit.domain.EventVO">
+select title from testcam where mod(detect,#{num})=0
+</select>
+
+<select id="getList" resultType="org.iotmit.domain.EventVO">
+select * from testcam order by detect desc
+</select>
+
+<select id="getListWithPaging" resultType="org.iotmit.domain.EventVO">
+<![CDATA[select * FROM testcam order by detect desc LIMIT #{amount} OFFSET #{pageNum}]]>
+</select>
+
+<select id="getListWithPagingTemp" resultType="org.iotmit.domain.EventVO">
+<![CDATA[select * from (select rownum rn, testcam.* from testcam where rownum <= #{pageNum}*#{amount})
+where rn > (#{pageNum}-1)*#{amount}]]>
+</select>
+
+<!-- <![CDATA[]>를 붙여야 부등호를 쿼리로 인식함/위에서 X개를 뽑아서 뒤에 Y개를 가져온다는 쿼리-->
+
+
+
+</mapper>

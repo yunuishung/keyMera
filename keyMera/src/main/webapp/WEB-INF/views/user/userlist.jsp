@@ -9,7 +9,7 @@
 
 <!-- /.panel-heading -->			    	
         <div class="panel-heading">
-            	 게시판 Advanced Tables
+                  회원 리스트 
         </div>      
       
         <div class="panel-body">
@@ -17,41 +17,40 @@
                <thead>
                   <tr align="center">
                       <th>번호</th>
-                      <th>제목</th>
-                      <th>작성자</th>
-                      <th>작성일</th>
-                      <th>조회수</th>
-                      <th>첨부</th>
+                      <th>아이디</th>
+                      <th>비밀번호</th>
+                      <th>회원명</th>
+                      <th>성별</th>
+                      <th>이메일</th>
                   </tr>
                </thead>
                <tbody>
-				<c:forEach items="${list}" var="board">                                
+				<c:forEach items="${userlist}" var="event">                                
                   <tr class="odd gradeX">
-                      <td><c:out value="${board.bno}"/></td>
-                      <td>
-                      <a href='/board/get?bno=<c:out value="${board.bno}"/>'><c:out value="${board.title}"/></a></td>
-                      <td><c:out value="${board.writer}"/></td>
-                      <td class="center"><fmt:formatDate pattern="yyyy-MM-dd hh:MM:ss" value="${board.regdate}"/></td>
-                      <td class="center"><c:out value=""/></td>
-                      <td class="center"><c:out value=""/></td>
+                      <td><c:out value="${user.no}"/></td>
+                      <td><a href='/user/get?bno=<c:out value="${user.id}"/>'><c:out value="${user.id}"/></a></td>
+                      <td class="center"><fmt:formatDate pattern="********" value="${user.pw}"/></td>
+                      <td><c:out value="${user.name}"/></td>
+                      <td><c:out value="${user.gender}"/></td>
+                      <td><c:out value="${user.email}"/></td>
                   </tr>
 				</c:forEach>
                </tbody>
             </table>
            <div class="well" align="center">
 	<c:if test="${pageMaker.prev}">
-	<a href="/board/list?pageNum=${pageMaker.startPage-1}">prev</a>
+	<a href="/user/userlist?pageNum=${pageMaker.startPage-1}">prev</a>
 	</c:if>
 	<c:forEach var="num" begin="${pageMaker.startPage }" end="${pageMaker.endPage}">
-	<a href="/board/list?pageNum=${num}">[${num}]</a>&nbsp;&nbsp;					
+	<a href="/user/userlist?pageNum=${num}">[${num}]</a>&nbsp;&nbsp;					
 	</c:forEach>
 	<c:if test="${pageMaker.next}">
-	<a href="/board/list?pageNum=${pageMaker.endPage+1}">next</a>
+	<a href="/user/userlist?pageNum=${pageMaker.endPage+1}">next</a>
 	</c:if>					
             </div>
             <!-- /.table-responsive -->
            <div class="well">
-			  <a href="/board/register" ><button id="regBtn" type="button" class="btn btn-info" >글쓰기</button></a>
+			  <a href="/user/register" ><button id="regBtn" type="button" class="btn btn-info" >회원등록</button></a>
            </div>
         </div>
 	
