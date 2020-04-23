@@ -33,7 +33,14 @@ public class BoardController {
 		model.addAttribute("pageMaker", new PageDTO(cri,count));
 	}
 	
-
+	@GetMapping("/eventlist")
+	public void eventlist(Criteria cri,  Model model) {
+		log.info("** 글 목록 ***");
+		model.addAttribute("list",service.getList( cri ) );
+		int count = (int)service.scount();  
+		model.addAttribute("pageMaker", new PageDTO(cri,count));
+	}
+	
 
 	@GetMapping("/register")
 	public void register() {
