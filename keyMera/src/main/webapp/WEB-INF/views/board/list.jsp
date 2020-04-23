@@ -47,12 +47,77 @@
 	<a href="/board/list?pageNum=${pageMaker.endPage+1}">next</a>
 	</c:if>					
             </div>
-            <!-- /.table-responsive 
+            <!-- /.table-responsive -->
            <div class="well">
-               <h4>DataTables Usage Information</h4>
-               <p>DataTables is a very flexible, advanced tables plugin for jQuery. In SB Admin, we are using a specialized version of DataTables built for Bootstrap 3. We have also customized the table headings to use Font Awesome icons in place of images. For complete documentation on DataTables, visit their website at <a target="_blank" href="https://datatables.net/">https://datatables.net/</a>.</p>
-               <a class="btn btn-default btn-lg btn-block" target="_blank" href="https://datatables.net/">View DataTables Documentation</a>
-           </div>-->
+			  <a href="/board/register" ><button id="regBtn" type="button" class="btn btn-info" >글쓰기</button></a>
+           </div>
         </div>
+	
+
+<script type="text/javascript">
+$(document)
+.ready(
+	function() {
+	
+		var result = '<c:out value="${result}"/>';
+		checkModal(result);
+		history.replaceState({}, null, null);
+
+		function checkModal(result) {
+			if (result === '' || history.state) {
+				return;
+			}
+			if (parseInt(result) > 0) {
+				$(".modal-body").html(
+						"게시글 " + parseInt(result)
+								+ " 번이 등록되었습니다.");
+			}
+			$("#myModal").modal("show");
+		}
+	
+		$("button[data-oper='register']").on("click", function(e){
+		    operForm.attr("action","/board/register").submit();
+			    
+		});
+			  
+		var actionForm = $("#actionForm");
+		$(".paginate_button a").on("click",
+			function(e) {
+				e.preventDefault();
+				console.log('click');
+
+				actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+				actionForm.submit();
+			});
+	
+		$(".move").on("click",
+			function(e) {
+				e.preventDefault();
+				actionForm.append("<input type='hidden' name='bno' value='" + $(this).attr( "href") + "'>");
+				actionForm.attr("action", "/board/get");
+				actionForm.submit();
+				});
+	
+		var searchForm = $("#searchForm");
+		$("#searchForm button").on("click",
+
+			function(e) {
+				if (!searchForm.find("option:selected").val()) {
+					alert("검색종류를 선택하세요");
+					return false;
+				}
+				if (!searchForm.find("input[name='keyword']").val()) {
+					alert("키워드를 입력하세요");
+					return false;
+				}
+				searchForm.find("input[name='pageNum']").val("1");
+				e.preventDefault();
+				searchForm.submit();
+
+			});
+
+	});
+</script>
+
 			       
 <%@include file="../includes/footer.jsp" %>

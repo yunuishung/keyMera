@@ -48,12 +48,11 @@ select title from tbl_board where mod(bno,#{num})=0
 </select>
 
 <select id="getList" resultType="org.iotmit.domain.BoardVO">
-select * from tbl_board
+select * from tbl_board order by bno desc
 </select>
 
 <select id="getListWithPaging" resultType="org.iotmit.domain.BoardVO">
-<![CDATA[select r1.* FROM  ( SELECT * FROM tbl_board  order by bno desc ) as r1 
-LIMIT #{amount, jdbcType=INTEGER} OFFSET #{pageNum, jdbcType=INTEGER}]]>
+<![CDATA[select * FROM tbl_board order by bno desc LIMIT #{amount} OFFSET #{pageNum}]]>
 </select>
 
 <select id="getListWithPagingTemp" resultType="org.iotmit.domain.BoardVO">

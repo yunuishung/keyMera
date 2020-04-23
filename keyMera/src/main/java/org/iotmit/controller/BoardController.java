@@ -51,9 +51,10 @@ public class BoardController {
 
 	}
 	@GetMapping("/modify")
-	public void modify(@RequestParam("bno") long bno, Model model) {
+	public void modify(@RequestParam("bno") long bno, Model model,Criteria cri) {
 		log.info("************글번호 가져오기******************");
 		model.addAttribute("board", service.get(bno));
+
 
 	}	
 
@@ -74,22 +75,33 @@ public class BoardController {
 	}
 
 	@PostMapping("/modify")
-	public String modify(BoardVO board, RedirectAttributes rttr,Criteria cri) {
-		log.info("====글 수정=========="+ board );
-		if( service.modify(board)) {
-			rttr.addFlashAttribute("result", "글수정되었습니다.");
+	public String modify(BoardVO board, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
+		log.info("modify:" + board);
+
+		if (service.modify(board)) {
+			rttr.addFlashAttribute("result", "success");
 		}
-		rttr.addFlashAttribute("pageNum", cri.getPageNum() );
-		rttr.addFlashAttribute("amount", cri.getAmount() );
+
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("amount", cri.getAmount());
+		//rttr.addAttribute("type", cri.getType());
+		//rttr.addAttribute("keyword", cri.getKeyword());
+
 		return "redirect:/board/list";
 	}
 
 	@PostMapping("/remove")
-	public String remove(@RequestParam("bno") Long bno, RedirectAttributes rttr) {
-		log.info( "==============글 삭제=============" + bno );
-		if( service.remove(bno)) {
-			rttr.addFlashAttribute("result","삭제되었습니다.");
+	public String remove(@RequestParam("bno") Long bno, Criteria cri, RedirectAttributes rttr) {
+
+		log.info("remove..." + bno);
+		if (service.remove(bno)) {
+			rttr.addFlashAttribute("result", "success");
 		}
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("amount", cri.getAmount());
+		//rttr.addAttribute("type", cri.getType());
+		//rttr.addAttribute("keyword", cri.getKeyword());
+
 		return "redirect:/board/list";
 	}
 	

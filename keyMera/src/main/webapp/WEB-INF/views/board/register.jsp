@@ -10,7 +10,7 @@ pageEncoding="UTF-8"%>
           </div>
           <!-- /.panel-heading -->
           <div class="panel-body">
-          <form role="form" action=/board/register" method="post">
+          <form role="form" action="/board/register" method="post">
               <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                   <tr>
                       <td>title</td><td><input class="form-control" name="title"></td>
@@ -22,7 +22,7 @@ pageEncoding="UTF-8"%>
                       <td>작성자</td><td><input class="form-control" name="writer"></td>
                   </tr>
                   <tr>
-                      <td colspan="2"><button type="submit" class="btn btn-default">Submit</button>
+                      <td colspan="2"><button type="submit" class="btn btn-default">글 등록</button>
                       <button type="reset" class="btn btn-default">Reset Button</button></td>
                   </tr>
               </table>
