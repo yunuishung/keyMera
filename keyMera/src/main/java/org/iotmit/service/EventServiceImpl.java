@@ -47,6 +47,36 @@ public class EventServiceImpl implements EventService {
 		return null;
 	}
 
+	@Override
+	public long scount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void register(EventVO board) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void insert(EventVO event) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean remove(long detect) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean modify(EventVO event) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 
 
 

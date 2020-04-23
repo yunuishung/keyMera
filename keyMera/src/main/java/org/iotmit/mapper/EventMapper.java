@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.iotmit.domain.EventVO;
 import org.iotmit.domain.Criteria;
-import org.iotmit.domain.EventVO;
+
 
 public interface EventMapper {
 	public List<EventVO> getList();

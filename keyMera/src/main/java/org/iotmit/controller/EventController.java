@@ -1,9 +1,9 @@
 package org.iotmit.controller;
 
-import org.iotmit.domain.BoardVO;
+import org.iotmit.domain.EventVO;
 import org.iotmit.domain.Criteria;
 import org.iotmit.domain.PageDTO;
-import org.iotmit.service.BoardService;
+import org.iotmit.service.EventService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,20 +19,21 @@ import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
-@RequestMapping("/board/*")
+@RequestMapping("/event/*")
 @AllArgsConstructor
-public class BoardController {
+public class EventController {
 
-	private BoardService service;
+	private EventService service;
 	
-	@GetMapping("/list")
-	public void list(Criteria cri,  Model model) {
-		log.info("** 글 목록 *****");
+	@GetMapping("/eventlist")
+	public void eventlist(Criteria cri,  Model model) {
+		log.info("** 글 목록 ***");
 		model.addAttribute("list",service.getList( cri ) );
 		int count = (int)service.scount();  
 		model.addAttribute("pageMaker", new PageDTO(cri,count));
 	}
 	
+
 	@GetMapping("/register")
 	public void register() {
 
@@ -57,7 +58,7 @@ public class BoardController {
 	}	
 
 	@PostMapping("/register")
-	public String register(BoardVO board) {
+	public String register(EventVO board) {
 		log.info("=======글 쓰기=======" + board);
 		service.register(board);
 		return "redirect:/board/list";
@@ -65,7 +66,7 @@ public class BoardController {
 	}
 
 	@PostMapping("/insert")
-	public String insert(BoardVO board) {
+	public String insert(EventVO board) {
 		log.info("=======글 쓰기=======" + board);
 		service.insert(board);
 		return "redirect:/board/list";
@@ -73,7 +74,7 @@ public class BoardController {
 	}
 
 	@PostMapping("/modify")
-	public String modify(BoardVO board, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
+	public String modify(EventVO board, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
 		log.info("modify:" + board);
 
 		if (service.modify(board)) {
