@@ -25,11 +25,11 @@
                   </tr>
                </thead>
                <tbody>
-				<c:forEach items="${userlist}" var="event">                                
+				<c:forEach items="${userlist}" var="user">                                
                   <tr class="odd gradeX">
                       <td><c:out value="${user.no}"/></td>
                       <td><a href='/user/get?bno=<c:out value="${user.id}"/>'><c:out value="${user.id}"/></a></td>
-                      <td class="center"><fmt:formatDate pattern="********" value="${user.pw}"/></td>
+                      <td class="center"><c:out value="${user.pw}"/></td>
                       <td><c:out value="${user.name}"/></td>
                       <td><c:out value="${user.gender}"/></td>
                       <td><c:out value="${user.email}"/></td>
